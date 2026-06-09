@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shringeshwor Construction Pvt. Ltd. — Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F5C400;
+      --yellow-dim: rgba(245,196,0,0.12);
+      --yellow-glow: rgba(245,196,0,0.35);
+      --black: #0D0D0D;
+      --surface: #141414;
+      --surface2: #1C1C1C;
+      --border: rgba(255,255,255,0.07);
+      --text: #E8E8E8;
+      --muted: #888;
+      --white: #FFFFFF;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Grid overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Yellow accent corner bar ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100vh;
+      background: linear-gradient(180deg, var(--yellow) 0%, transparent 100%);
+      z-index: 10;
+    }
+
+    /* ── Top bar ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    header .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    header .logo-wrap img {
+      height: 42px;
+      width: auto;
+      filter: brightness(1);
+    }
+
+    .header-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid rgba(245,196,0,0.4);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    /* ── Main layout ── */
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Rotating diamond background motif ── */
+    .bg-diamond {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border: 1px solid rgba(245,196,0,0.06);
+      pointer-events: none;
+      z-index: 0;
+      animation: rotateSlow 60s linear infinite;
+    }
+    .bg-diamond::before {
+      content: '';
+      position: absolute;
+      inset: 60px;
+      border: 1px solid rgba(245,196,0,0.04);
+    }
+    @keyframes rotateSlow {
+      from { transform: translate(-50%, -50%) rotate(45deg); }
+      to   { transform: translate(-50%, -50%) rotate(405deg); }
+    }
+
+    /* ── Glow blob ── */
+    .glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,196,0,0.07) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Content ── */
+    .content {
+      text-align: center;
+      max-width: 760px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--yellow);
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 800;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    h1 span {
+      color: var(--yellow);
+      display: block;
+    }
+
+    .tagline {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 56px;
+      line-height: 1.6;
+    }
+
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      max-width: 480px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), var(--yellow-dim), var(--border), transparent);
+      margin: 0 auto 56px;
+    }
+
+    /* ── Email form ── */
+    .form-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .notify-form {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .notify-form input {
+      flex: 1;
+      background: var(--surface2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-right: none;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      padding: 14px 20px;
+      outline: none;
+      border-radius: 2px 0 0 2px;
+      transition: border-color 0.2s;
+    }
+    .notify-form input::placeholder { color: #555; }
+    .notify-form input:focus {
+      border-color: rgba(245,196,0,0.5);
+    }
+
+    .notify-form button {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      padding: 14px 28px;
+      cursor: pointer;
+      border-radius: 0 2px 2px 0;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .notify-form button:hover { background: #ffd426; }
+    .notify-form button:active { transform: scale(0.98); }
+
+    .success-msg {
+      display: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      text-transform: uppercase;
+      padding: 14px;
+    }
+
+    /* ── Services strip ── */
+    .services {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 72px;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .service-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      padding: 0 24px;
+      transition: color 0.2s;
+    }
+    .service-item:hover { color: var(--yellow); }
+    .service-sep {
+      width: 4px;
+      height: 4px;
+      background: rgba(245,196,0,0.35);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      border-top: 1px solid var(--border);
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: #444;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+
+    /* ── Entrance animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow   { animation: fadeUp 0.7s ease 0.1s both; }
+    h1         { animation: fadeUp 0.7s ease 0.25s both; }
+    .tagline   { animation: fadeUp 0.7s ease 0.4s both; }
+    .divider   { animation: fadeUp 0.7s ease 0.55s both; }
+    .form-label { animation: fadeUp 0.7s ease 0.6s both; }
+    .notify-form { animation: fadeUp 0.7s ease 0.65s both; }
+    .services  { animation: fadeUp 0.7s ease 0.8s both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      header { padding: 16px 24px; }
+      main { padding: 100px 24px 80px; }
+      footer { padding: 14px 24px; flex-direction: column; gap: 8px; text-align: center; }
+      .countdown-unit { padding: 0 14px; }
+      .countdown-unit:not(:last-child)::after { font-size: 32px; top: 8px; }
+      .notify-form { flex-direction: column; }
+      .notify-form input { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 2px 2px 0 0; }
+      .notify-form button { border-radius: 0 0 2px 2px; }
+      .service-item { padding: 6px 12px; }
+      header .logo-wrap img { height: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow"></div>
+  <div class="bg-diamond"></div>
+
+  <header>
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Shringeshwor Construction Pvt. Ltd." />
+    </div>
+    <div class="header-badge">Website Coming Soon</div>
+  </header>
+
+  <main>
+    <div class="content">
+
+      <div class="eyebrow">Something Big Is Being Built</div>
+
+      <h1>
+        We're Under
+        <span>Construction</span>
+      </h1>
+
+      <p class="tagline">
+        Our new website is being crafted with the same precision<br>
+        we bring to every structure we build.
+      </p>
+
+
+      <div class="divider"></div>
+
+      <p class="form-label">Get notified when we launch</p>
+      <div class="notify-form" id="notifyForm">
+        <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" />
+        <button onclick="handleNotify()">Notify Me</button>
+      </div>
+      <div class="success-msg" id="successMsg">✦ You're on the list — we'll be in touch.</div>
+
+      <!-- Services -->
+      <div class="services">
+        <span class="service-item">Residential</span>
+        <span class="service-sep"></span>
+        <span class="service-item">Commercial</span>
+        <span class="service-sep"></span>
+        <span class="service-item">Infrastructure</span>
+        <span class="service-sep"></span>
+        <span class="service-item">Renovation</span>
+        <span class="service-sep"></span>
+        <span class="service-item">Interior Design</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-copy">© 2025 Shringeshwor Construction Pvt. Ltd. — Nepal</span>
+    <div class="footer-links">
+      <a href="mailto:info@shringeshworconstruction.com">Contact Us</a>
+      <a href="tel:+977XXXXXXXXXX">+977-XXX-XXXX</a>
+    </div>
+  </footer>
+
+  <script>
+
+    function handleNotify() {
+      const val = document.getElementById('emailInput').value.trim();
+      const re  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(val)) {
+        document.getElementById('emailInput').style.borderColor = 'rgba(255,80,80,0.6)';
+        setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 1200);
+        return;
+      }
+      document.getElementById('notifyForm').style.display  = 'none';
+      document.getElementById('successMsg').style.display  = 'block';
+    }
+
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleNotify();
+    });
+  </script>
+</body>
+</html>
